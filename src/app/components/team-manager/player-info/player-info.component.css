@@ -1,0 +1,10 @@
+.player-info{
+    padding: 8px;
+    border-bottom: 3px solid rgb(70, 142, 175);
+}
+
+input{
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}

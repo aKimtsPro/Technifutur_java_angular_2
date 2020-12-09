@@ -1,0 +1,17 @@
+.team-manager-form{
+    background-color: rgb(94, 250, 115);
+    padding: 8px;
+}
+
+input{
+    border-radius: 5px;
+}
+
+input.ng-pristine{
+    border: 2px dashed rgb(77, 73, 28);
+}
+
+input.ng-invalid.ng-dirty{
+    background-color: rgb(250, 194, 194);
+    color: white;
+}

@@ -1,0 +1,9 @@
+
+<form class="row team-manager-form" [formGroup]="form" (submit)="onSubmit()">
+    <input type="text" class="col-2" placeholder="nom" formControlName="nom">
+    <input type="text" class="col-2" placeholder="prenom" formControlName="prenom">
+    <input type="number" class="col-2" placeholder="age" formControlName="age">
+    <input type="number" class="col-2"  placeholder="taille" formControlName="taille">
+    <button class="btn btn-success col-2 offset-2" *ngIf="form.valid">ajouter</button>
+    <button class="btn btn-danger col-2 offset-2" disabled *ngIf="form.invalid">invalide</button>
+</form>
