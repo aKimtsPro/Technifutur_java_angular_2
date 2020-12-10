@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable, Subscription } from 'rxjs';
 import { Post } from '../model/Post.model';
+import { User } from '../model/User.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,20 @@ import { Post } from '../model/Post.model';
 export class ApiConsumeService {
 
   private readonly BASE_URL: string = "https://jsonplaceholder.typicode.com";
-
+  private userInsertedEvent = new EventEmitter<User>();
 
   constructor(private client: HttpClient) {
   }
 
+  // event
 
-  getPosts( subscriber: (value: Post[]) => void ) : Subscription {
+  subscribe(subscriber: (user: User) => void ){
+    this.userInsertedEvent.subscribe( subscriber );
+  }
+
+  // Posts
+
+  getPosts( subscriber: (tabPost: Post[]) => void ) : Subscription {
     return this.client.get(this.BASE_URL + '/posts')
       .subscribe(
         subscriber,
@@ -34,6 +42,22 @@ export class ApiConsumeService {
 
   deletePost ( id : number) {
     return this.client.delete( this.BASE_URL + '/posts/' + id );
+  }
+
+  // Users
+
+  getUsers() : Observable<User[]>{
+    return <Observable<User[]>> this.client.get(this.BASE_URL + "/users");
+  }
+
+  deleteUser(id : number){
+    return this.client.delete(this.BASE_URL + '/users/' + id);
+  }
+
+  postUser(user: User) : Observable<User> {
+    let obsPost = <Observable<User>> this.client.post(this.BASE_URL + "/users", user);
+    obsPost.subscribe((inserted) => this.userInsertedEvent.emit(inserted))
+    return obsPost;
   }
 
 }

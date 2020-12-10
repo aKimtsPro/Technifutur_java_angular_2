@@ -10,6 +10,9 @@ import { PlayerInfoComponent } from './components/team-manager/player-info/playe
 import { NavComponent } from './components/nav/nav.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './components/user/user.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { DemoObsComponent } from './components/demo-obs/demo-obs.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
     AddPlayerFormComponent,
     PlayerInfoComponent,
     NavComponent,
-    PostsComponent
+    PostsComponent,
+    UserComponent,
+    UserFormComponent,
+    DemoObsComponent
   ],
   imports: [
     BrowserModule,

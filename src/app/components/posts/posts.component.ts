@@ -14,11 +14,11 @@ export class PostsComponent implements OnInit {
   constructor(private service: ApiConsumeService) { }
 
   ngOnInit(): void {
-    this.service.postPost({id:9,title: "mon titre", body:"contenu"}).subscribe((emission) => console.log(emission))
+    this.service.postPost({id:9,title: "mon titre", body:"contenu"}).subscribe((posts) => console.log(posts))
   }
 
   onClick(){
-    this.service.getPosts((emission) => this.posts = emission);
+    this.service.getPosts( (emission) => this.posts = emission );
   }
 
 }

@@ -1,0 +1,22 @@
+<h2>Formulaire d'utilisateur</h2>
+
+<form [formGroup]="userForm" id="user-form" (submit)="onSubmit()">
+    <div class="form-group">
+        <label for="username">username</label>
+        <input id="username" type="text" class="form-control" formControlName="username">
+    </div>
+    <div class="form-group">
+        <label for="name">name</label>
+        <input id="name" type="text" class="form-control" formControlName="name">
+    </div>
+    <div class="form-group">
+        <label for="email">email</label>
+        <input id="email "type="email" class="form-control" formControlName="email">
+    </div>
+    <div class="form-group">
+        <label for="phone">phone</label>
+        <input id="phone" type="text" class="form-control" formControlName="phone">
+    </div>
+    <button type="submit" class="btn btn-success submit-btn" *ngIf="userForm.valid">submit</button>
+    <button class="btn btn-danger submit-btn" disabled *ngIf="userForm.invalid">invalide</button>
+</form>

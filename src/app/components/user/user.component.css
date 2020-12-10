@@ -1,0 +1,13 @@
+#header-user{
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+#user-list{
+    margin-bottom: 50px;
+}
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}

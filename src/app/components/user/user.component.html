@@ -1,0 +1,29 @@
+<div class="row" id="header-user">
+    <h2 class="display-4"> Mes utilisateurs </h2>
+    <button class="btn btn-info" (click)="onReload()">reload</button>
+</div>
+
+<app-user-form></app-user-form>
+
+<div id="user-list">
+    <div class="card" *ngFor="let user of users">
+        <div class="card-header">
+            <h3 class="display-6">{{ user.id }} - {{ user.username }}</h3>
+            <button class="btn btn-danger" (click)="delete(user)">supprimer</button>
+        </div>
+        <div class="row card-body">
+            <div class="col-6">
+                <h4>Info perso</h4>
+                <div><span> name : </span>{{ user.name }}</div>
+                <div><span> email : </span>{{ user.email }}</div>
+                <div><span> phone : </span>{{ user.phone }}</div>
+            </div>
+            <div class="col-6" *ngIf="user.company">
+                <h4>Info entreprise </h4>
+                <div><span> name : </span>{{ user.company.name }}</div>
+                <div><span> catchPhrase : </span>{{ user.company.catchPhrase }}</div>
+                <div><span> bullshit : </span>{{ user.company.bs }}</div>
+            </div>
+        </div>
+    </div>
+</div>
