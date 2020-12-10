@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Basketteur } from 'src/app/model/Basketteur.model';
+import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'app-add-player-form',
@@ -11,10 +12,7 @@ export class AddPlayerFormComponent implements OnInit {
 
   form: FormGroup;
 
-  @Output()
-  addPlayer = new EventEmitter<Basketteur>();
-
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: FormBuilder, private service: TeamService) {
     this.form = builder.group({
       nom: new FormControl(null, [Validators.required, Validators.minLength(4)]),
       prenom: new FormControl(null, [Validators.required, Validators.minLength(4)]),
@@ -28,7 +26,7 @@ export class AddPlayerFormComponent implements OnInit {
 
   onSubmit(){
     if(this.form.valid)
-      this.addPlayer.emit( this.form.value );
+      this.service.addPlayer( this.form.value );
   }
 
 }

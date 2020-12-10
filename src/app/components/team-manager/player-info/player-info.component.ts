@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Basketteur } from 'src/app/model/Basketteur.model';
+import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'app-player-info',
@@ -14,16 +15,13 @@ export class PlayerInfoComponent implements OnInit {
   @Input()
   index: number;
 
-  @Output()
-  delete = new EventEmitter<number>()
-
-  constructor() { }
+  constructor(private service: TeamService) { }
 
   ngOnInit(): void {
   }
 
   onClick(){
-    this.delete.emit( this.index );
+    this.service.deletePlayer( this.index );
   }
 
 }

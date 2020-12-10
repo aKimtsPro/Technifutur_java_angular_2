@@ -7,14 +7,9 @@
         <app-player-info 
             [player]="player" 
             [index]="index" 
-            (delete)="onDelete( $event )"
             *ngFor="let player of team; let index = index"
         >
         </app-player-info>
     </div>
-
-    <div class="container" *ngIf="team.length < 5">
-        <app-add-player-form (addPlayer)="onAddPlayer( $event )"></app-add-player-form>
-    </div>
-
+ 
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Basketteur } from '../../model/Basketteur.model';
+import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'app-team-manager',
@@ -8,29 +9,12 @@ import { Basketteur } from '../../model/Basketteur.model';
 })
 export class TeamManagerComponent implements OnInit {
 
-  team: Basketteur[] = [
-    {
-      nom: "james",
-      prenom: "lebron",
-      age: 35,
-      taille: 206
-    }
-  ];
+  team: Basketteur[];
 
-  constructor() { }
+  constructor(private service: TeamService) { 
+    this.team = service.team;
+  }
 
   ngOnInit(): void {
   }
-
-  onAddPlayer(player: Basketteur){
-    if(this.team.length < 5)
-      this.team.push( player );
-
-    console.log(this.team);
-  }
-
-  onDelete(index: number){
-    this.team.splice(index, 1);
-  }
-
 }
