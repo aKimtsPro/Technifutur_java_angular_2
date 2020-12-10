@@ -9,11 +9,12 @@ import { ApiConsumeService } from 'src/app/services/api-consume.service';
 })
 export class PostsComponent implements OnInit {
 
-  posts: Post[] = [{id:1, userId:1, title: "titre", body: "contenu"}];
+  posts: Post[] = [{id:1,  title: "titre", body: "contenu"}];
 
   constructor(private service: ApiConsumeService) { }
 
   ngOnInit(): void {
+    this.service.postPost({id:9,title: "mon titre", body:"contenu"}).subscribe((emission) => console.log(emission))
   }
 
   onClick(){

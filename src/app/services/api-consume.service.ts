@@ -24,4 +24,16 @@ export class ApiConsumeService {
       );
   }
 
+  postPost( post: Post ) {
+    return this.client.post( this.BASE_URL+ '/posts', post );
+  }
+
+  putPost ( post : Post ) {
+    return this.client.put( this.BASE_URL+ '/posts', post );
+  }
+
+  deletePost ( id : number) {
+    return this.client.delete( this.BASE_URL + '/posts/' + id );
+  }
+
 }
